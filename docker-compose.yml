@@ -15,15 +15,15 @@ services:
     volumes: #文件映射
       - /data:/data
  
-  telegraf:
-    image: telegraf
-    container_name: telegraf4
+  #telegraf: #此image沒有支持snmp,所以取消
+    #image: telegraf
+    #container_name: telegraf4
     #ports:
     #  - "8125:8125/udp"
-    networks:
-      - tig
-    volumes:
-      - $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro  #讀取現行目錄下的telegraf.conf唯讀
+    #networks:
+      #- tig
+    #volumes:
+      #- $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro  #讀取現行目錄下的telegraf.conf唯讀
 
   grafana:
     image: christhg/grafana:latest #images镜像
