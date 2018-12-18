@@ -1,0 +1,41 @@
+version: "2"
+services:
+  influxdb:
+    image: tutum/influxdb:latest  #images镜像
+    container_name: influxsrv4
+    ports: #端口映射
+      - "8083:8083"
+      - "8086:8086"
+    expose:
+      - "8090"
+      - "8099"
+    networks:
+      - tig
+    #environment:  #環境變數
+    volumes: #文件映射
+      - /data:/data
+ 
+  telegraf:
+    image: telegraf
+    container_name: telegraf4
+    #ports:
+    #  - "8125:8125/udp"
+    networks:
+      - tig
+    volumes:
+      - $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro  #讀取現行目錄下的telegraf.conf唯讀
+
+  grafana:
+    image: christhg/grafana:latest #images镜像
+    depends_on:  #依賴於influxdb
+     - influxdb
+    container_name: grafana4
+    ports: #端口映射
+       - "3000:3000"
+    networks:
+      - tig
+    #volumes: #文件映射
+
+networks:
+  tig:
+    driver: bridge
