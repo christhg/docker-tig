@@ -1,10 +1,8 @@
 # TIG Stack
----
 ## official web site
 * telegraf-使用宿主機
 * influxdb-使用docker
 * garafana-使用docker
----
 # Docker How to
    - [root@tigsrv]# cd docker-tig
    - [root@tigsrv docker-tig]# docker-compose up -d
