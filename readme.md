@@ -5,6 +5,9 @@
 * influxdb-使用docker
 * garafana-使用docker
 ---
+# Docker How to
+   [root@tigsrv]# cd docker-tig
+   [root@tigsrv docker-tig]# docker-compose up -d
 #Telegraf How to -
 * 1 install telegraf
    * [root@tigsrv docker-tig]# wget https://dl.influxdata.com/telegraf/releases/telegraf-1.6.3-1.x86_64.rpm
