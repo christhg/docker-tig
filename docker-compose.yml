@@ -12,7 +12,7 @@ services:
     networks:
       - tig
     #environment:  #環境變數
-    volumes: #文件映射
+    volumes: #文件映射,備份
       - /data:/data
  
   #telegraf: #此image沒有支持snmp,所以取消
@@ -26,7 +26,7 @@ services:
       #- $PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro  #讀取現行目錄下的telegraf.conf唯讀
 
   grafana:
-    image: christhg/grafana:latest #images镜像
+    image: christhg/grafana:latest #images镜像:grafana/grafana:latest
     depends_on:  #依賴於influxdb
      - influxdb
     container_name: grafana4
@@ -34,8 +34,8 @@ services:
        - "3000:3000"
     networks:
       - tig
-    #volumes: #文件映射
-
+    #volumes: #文件映射,備份配置資料
+      #- /var/lib/grafana:/var/lib/grafana
 networks:
   tig:
     driver: bridge
