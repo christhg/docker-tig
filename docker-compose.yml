@@ -2,7 +2,7 @@ version: "2"
 services:
   influxdb:
     image: tutum/influxdb:latest  #images镜像
-    container_name: influxsrv4
+    container_name: influxsrv5
     ports: #端口映射
       - "8083:8083"
       - "8086:8086"
@@ -13,11 +13,11 @@ services:
       - tig
     #environment:  #環境變數
     volumes: #文件映射,備份
-      - /data:/data
+      - $PWD/influxdata:/data
  
   #telegraf: #此image沒有支持snmp,所以取消
     #image: telegraf
-    #container_name: telegraf4
+    #container_name: telegraf5
     #ports:
     #  - "8125:8125/udp"
     #networks:
@@ -29,13 +29,13 @@ services:
     image: christhg/grafana:latest #images镜像:grafana/grafana:latest
     depends_on:  #依賴於influxdb
      - influxdb
-    container_name: grafana4
+    container_name: grafana5
     ports: #端口映射
        - "3000:3000"
     networks:
       - tig
-    #volumes: #文件映射,備份配置資料
-      #- /var/lib/grafana:/var/lib/grafana
+    volumes: #文件映射,備份配置資料
+      - $PWD/grafana:/var/lib/grafana
 networks:
   tig:
     driver: bridge
