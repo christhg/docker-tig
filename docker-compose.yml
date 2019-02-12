@@ -34,8 +34,8 @@ services:
        - "3000:3000"
     networks:
       - tig
-    volumes: #文件映射,備份配置資料
-      - $PWD/grafana:/var/lib/grafana
+    volumes: #文件映射,更改備份後使用tar配置資料
+      - /var/lib/grafana:/var/lib/grafana
 networks:
   tig:
     driver: bridge
