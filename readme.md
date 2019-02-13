@@ -3,8 +3,11 @@
 * telegraf-使用宿主機
 * influxdb-使用docker
 * garafana-使用docker
-* garafana-last備份檔使用20190213.tar
+* garafana-last備份檔使用20190213.tar to /var/lib/garafana
 # Docker How to
+   - [root@tigsrv]# mkdir /influxdata
+   - [root@tigsrv]# chmod -R 777 /influxdata
+   - [root@tigsrv]# tar xvf garafana-20190213.tar
    - [root@tigsrv]# cd docker-tig
    - [root@tigsrv docker-tig]# docker-compose up -d
 # Telegraf How to
