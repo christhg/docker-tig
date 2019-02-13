@@ -19,3 +19,6 @@
 3. restart telegraf
    * [root@tigsrv docker-tig]# systemctl restart telegraf
    * [root@tigsrv docker-tig]# systemctl status telegraf
+# Influxdb How to
+  - alter retention policy autogen on telegraf duration 60d replication 1 default
+  - SHOW RETENTION POLICIES ON "telegraf"
