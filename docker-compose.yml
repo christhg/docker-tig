@@ -13,7 +13,7 @@ services:
       - tig
     #environment:  #環境變數
     volumes: #文件映射,備份
-      - $PWD/influxdata:/data
+      - /influxdata:/data #$PWD/influxdata:/data
  
   #telegraf: #此image沒有支持snmp,所以取消
     #image: telegraf
