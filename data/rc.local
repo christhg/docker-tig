@@ -1,0 +1,28 @@
+#!/bin/bash
+# THIS FILE IS ADDED FOR COMPATIBILITY PURPOSES
+#
+# It is highly advisable to create own systemd services or udev rules
+# to run scripts during boot instead of using this file.
+#
+# In contrast to previous versions due to parallel execution during boot
+# this script will NOT be run after all other services.
+#
+# Please note that you must run 'chmod +x /etc/rc.d/rc.local' to ensure
+# that this script will be executed during boot.
+
+touch /var/lock/subsys/local
+# start mosca service 1883
+#mosca -v | pino
+#mosca --http-port 8088 -v > /var/mess/logs/mosca_server.log
+
+# start telegraf
+systemctl start telegraf
+
+#/root/docker-compose restart
+#/usr/local/bin/docker-compose -f /root/docker-tig/docker-compose.yml start
+docker start grafana5 #啟動容器grafana
+docker start influxsrv5 #啟動容器influxdb
+
+# start oracle
+#/usr/local/bin/docker-compose -f /root/docker-oracle/docker-compose.yml start
+docker start oracledb #啟動容器oracledb
