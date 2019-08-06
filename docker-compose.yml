@@ -36,6 +36,7 @@ services:
       - tig
     volumes: #文件映射,更改備份後使用tar配置資料
       - /var/lib/grafana:/var/lib/grafana
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
 networks:
   tig:
     driver: bridge
